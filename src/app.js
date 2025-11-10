@@ -5,16 +5,32 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload=function excusa() {
+//Reusable
+function randomStringInArray(array){
+  const string = array[Math.floor(Math.random() * array.length)];
+  return string;
+}
+
+//Reusable
+function randomExcuseGenerator() {
   //write your code here
   console.log("Generando una excusa");
-  let who = ["The dog", "My grandma", "His turtle", "My bird"];
-  let action = ["ate", "peed", "crushed", "broke"];
-  let what = ["my homework", "the keys", "the car"];
-  let when = ["before the class","right on time","when I finished","during my lunch","while I was praying"];
 
-  let excuse =who[Math.floor(Math.random() * who.length)]+ " " +action[Math.floor(Math.random() * action.length)]+
-    " " +what[Math.floor(Math.random() * what.length)] + " " +when[Math.floor(Math.random() * when.length)];
+  const arrayWho = ["The dog", "My grandma", "His turtle", "My bird"];
+  const arrayAction = ["ate", "peed", "crushed", "broke"];
+  const arrayWhat = ["my homework", "the keys", "the car"];
+  const arrayWhen = ["before the class", "right on time", "when I finished", "during my lunch", "while I was praying"];
+  
+  const randomWho = randomStringInArray(arrayWho);
+  const randomAction = randomStringInArray(arrayAction);
+  const randomWhat = randomStringInArray(arrayWhat);
+  const randomWhen = randomStringInArray(arrayWhen);
 
-  document.getElementById("excuse").innerHTML = excuse;
+  //Mejor lectura de suma de strings
+  const randomExcuse = `${randomWho} ${randomAction} ${randomWhat} ${randomWhen}`;
+
+  document.getElementById("excuse").innerHTML = randomExcuse;
 };
+
+window.onload = randomExcuseGenerator();
+
